@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SnowFall Animation</title>
+    <style>
+        body {
+            margin: 0;
+            overflow: hidden;
+            background-color: #2e2e2e;
+        }
+        .snowflake {
+            position: absolute;
+            top: -10px;
+            background: white;
+            border-radius: 50%;
+            opacity: 0.8;
+            animation: fall linear infinite;
+        }
+        @keyframes fall {
+            to {
+                transform: translateY(100vh);
+            }
+        }
+    </style>
+</head>
+<body>
+
+<script>
+    const snowflakeCount = 100;
+
+    for (let i = 0; i < snowflakeCount; i++) {
+        const snowflake = document.createElement('div');
+        const size = Math.random() * 10 + 5; // Random size between 5 and 15
+        const left = Math.random() * window.innerWidth; // Random horizontal position
+        const fallDuration = Math.random() * 3 + 2; //fall duration between 2 and 5 seconds
+
+        snowflake.className = 'snowflake';
+        snowflake.style.width = `${size}px`;
+        snowflake.style.height = `${size}px`;
+        snowflake.style.left = `${left}px`;
+        snowflake.style.animationDuration= `${fallDuration}s`; //Random fall duration
+        snowflake.style.animationDelay = `${Math.random() * 5}s`; //Random delay before falling
+
+        document.body.appendChild(snowflake);
+    }
+</script>
+    
+</body>
+</html>
